@@ -1,0 +1,190 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 225 40% 7%;
+    --foreground: 0 0% 90%;
+
+    --card: 225 35% 10%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 225 35% 10%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 225 40% 10%;
+
+    --secondary: 225 30% 15%;
+    --secondary-foreground: 0 0% 90%;
+
+    --muted: 225 25% 12%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 225 30% 18%;
+    --accent-foreground: 0 0% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 225 30% 18%;
+    --input: 225 30% 18%;
+    --ring: 224.3 76.3% 48%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    cursor: default;
+    -webkit-user-select: auto; /* Allow text selection */
+    -moz-user-select: auto;
+    -ms-user-select: auto;
+    user-select: auto;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on mobile */
+  }
+  
+  html, body {
+    @apply bg-background text-foreground;
+    background: linear-gradient(to bottom, hsl(225, 40%, 10%), hsl(225, 40%, 5%));
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Ensure scrolling works */
+  }
+
+  /* Interactive elements cursor styles */
+  a, 
+  button, 
+  [role="button"],
+  input[type="submit"],
+  input[type="button"],
+  input[type="checkbox"],
+  input[type="radio"],
+  select,
+  label[for],
+  .cursor-pointer {
+    cursor: pointer !important;
+  }
+  
+  /* Text input elements */
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="url"],
+  textarea,
+  [contenteditable="true"],
+  .cursor-text {
+    cursor: text !important;
+  }
+  
+  /* Disabled elements */
+  [disabled],
+  .disabled {
+    cursor: not-allowed !important;
+    opacity: 0.7;
+  }
+  
+  /* Drag operations */
+  [draggable="true"] {
+    cursor: grab;
+  }
+  
+  [draggable="true"]:active {
+    cursor: grabbing;
+  }
+  
+  /* Resizable elements */
+  .resize {
+    cursor: se-resize;
+  }
+  
+  /* Wait cursor for loading states */
+  .loading {
+    cursor: wait;
+  }
+  
+  /* Help cursor */
+  .help {
+    cursor: help;
+  }
+  
+  /* Move cursor */
+  .move {
+    cursor: move;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted-foreground));
+}
+
+/* Improve text rendering */
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Fix focus outlines for accessibility */
+:focus-visible {
+  outline: 2px solid hsl(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Remove default focus styles when using mouse */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Prevent text selection by default except specific elements */
+* {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Allow text selection for important elements */
+p, h1, h2, h3, h4, h5, h6, blockquote, code, pre,
+input[type="text"], input[type="password"], input[type="email"],
+input[type="number"], input[type="search"], input[type="tel"],
+input[type="url"], textarea, [contenteditable="true"],
+.selectable {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+/* Fix mobile tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Responsive images */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
