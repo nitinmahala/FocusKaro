@@ -1,20 +1,20 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { CheckCircle, Clock, FileText, ArrowRight } from "lucide-react"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
+import { motion, Variants } from "framer-motion";
+import { CheckCircle, Clock, FileText, ArrowRight } from "lucide-react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 export default function Home() {
-  const container = {
+  const container: Variants = {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
       transition: { staggerChildren: 0.25, delayChildren: 0.2 },
     },
-  }
+  };
 
-  const item = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } }
+  const item: Variants = { hidden: { opacity: 0, y: 20 }, show: { opacity: 1, y: 0 } };
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen px-6">
@@ -59,7 +59,7 @@ export default function Home() {
         <FeatureCard
           variants={item}
           href="/notes"
-          icon={<FileText className="h-12 w-12 mb-4 text-purple-300"  />}
+          icon={<FileText className="h-12 w-12 mb-4 text-purple-300" />}
           title="Notes"
           description="Capture your thoughts and ideas"
           color="from-purple-800/40 to-purple-700/20"
@@ -67,10 +67,20 @@ export default function Home() {
         />
       </motion.div>
     </div>
-  )
+  );
 }
 
-function FeatureCard({ variants, href, icon, title, description, color, glow }) {
+interface FeatureCardProps {
+  variants: Variants;
+  href: string;
+  icon: JSX.Element;
+  title: string;
+  description: string;
+  color: string;
+  glow?: string;
+}
+
+function FeatureCard({ variants, href, icon, title, description, color, glow }: FeatureCardProps) {
   return (
     <motion.div variants={variants}>
       <Link href={href} prefetch={false} className="block h-full">
@@ -87,5 +97,5 @@ function FeatureCard({ variants, href, icon, title, description, color, glow }) 
         </div>
       </Link>
     </motion.div>
-  )
+  );
 }
